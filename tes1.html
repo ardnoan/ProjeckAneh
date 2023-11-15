@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm Buttons</title>
+  <style>
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    #noButton {
+      background-color: #f44336;
+    }
+
+    #noButton.disabled {
+      background-color: #ddd;
+      cursor: not-allowed;
+    }
+
+    #resultDiv {
+      display: none;
+      background-color: #3498db;
+      color: white;
+      padding: 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <button id="yesButton" onclick="yesAction()">Yes</button>
+  <button id="noButton" onclick="noAction()">No</button>
+
+  <div id="resultDiv">
+    <p>Result Div Content</p>
+  </div>
+
+  <script>
+    function yesAction() {
+      // Sembunyikan semua tombol
+      document.getElementById('yesButton').style.display = 'none';
+      document.getElementById('noButton').style.display = 'none';
+
+      // Tampilkan div hasil
+      document.getElementById('resultDiv').style.display = 'block';
+    }
+
+    function noAction() {
+      // Ganti posisi tombol "No" secara acak
+      const button = document.getElementById('noButton');
+      const randomX = Math.floor(Math.random() * (window.innerWidth - button.offsetWidth));
+      const randomY = Math.floor(Math.random() * (window.innerHeight - button.offsetHeight));
+
+      button.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    }
+  </script>
+</body>
+</html>
